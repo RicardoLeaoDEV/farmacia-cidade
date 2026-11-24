@@ -1,0 +1,17 @@
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Dependências e cache Vercel
+node_modules/
+.vercel/
+
+# Documentos comerciais internos (mantidos apenas localmente)
+proposta-comercial.html
+Proposta-Comercial-Farmacia-Cidade.pdf
+prints/
+*.metadata.json
+

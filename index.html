@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#D32F2F" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Farmácia Cidade" />
+  <meta name="description" content="Farmácia Cidade - Saúde & Beleza no Hipódromo/Encruzilhada, Recife - PE. Peça medicamentos, perfumaria e fraldas pelo WhatsApp com entrega rápida na Estrada de Belém e região." />
+
+  <title>Farmácia Cidade - Saúde &amp; Beleza | Delivery Hipódromo e Encruzilhada</title>
+
+  <!-- Favicon SVG embutido (100% autossuficiente) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23D32F2F'/%3E%3Cpath d='M50 28a5 5 0 0 1 5-5h10a5 5 0 0 1 5 5v18h18a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H70v18a5 5 0 0 1-5 5H55a5 5 0 0 1-5-5V66H32a5 5 0 0 1-5-5V51a5 5 0 0 1 5-5h18V28z' fill='%23fff'/%3E%3Cpath d='M60 64.5S51.5 58.8 51.5 53.3c0-2.8 2.1-4.8 4.6-4.8 1.6 0 3 .8 3.9 2.1.9-1.3 2.3-2.1 3.9-2.1 2.5 0 4.6 2 4.6 4.8 0 5.5-8.5 11.2-8.5 11.2z' fill='%23D32F2F'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome 6 (Ícones + WhatsApp Oficial) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            xs: '400px',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              red: '#D32F2F',
+              redDark: '#B71C1C',
+              redLight: '#FEF2F2',
+              whatsapp: '#25D366',
+              whatsappDark: '#1EBE5D',
+              bg: '#F8FAFC',
+            }
+          },
+          boxShadow: {
+            'card': '0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03)',
+            'card-hover': '0 12px 28px -4px rgba(211, 47, 47, 0.10), 0 4px 10px -2px rgba(15, 23, 42, 0.04)',
+            'nav': '0 -4px 20px rgba(15, 23, 42, 0.07)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #F8FAFC;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Esconde barra de rolagem mantendo scroll suave nas abas */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Animação sutil no badge do carrinho */
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.28); }
+      100% { transform: scale(1); }
+    }
+    .animate-pop {
+      animation: pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    /* Safe area para iPhones modernos */
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-slate-800 antialiased pb-28 md:pb-12 selection:bg-brand-red selection:text-white">
+
+  <!-- ========================================================= -->
+  <!-- 1. CABEÇALHO FIXO E STATUS DA FARMÁCIA                    -->
+  <!-- ========================================================= -->
+  <header id="topo" class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+    <!-- Faixa Superior Institucional -->
+    <div class="bg-brand-red text-white text-xs py-1.5 px-4">
+      <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 truncate">
+          <span id="status-dot" class="relative flex h-2 w-2 shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-85"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]"></span>
+          </span>
+          <span id="status-badge-text" class="font-semibold tracking-tight truncate">
+            Aberto agora • Entrega rápida no bairro
+          </span>
+        </div>
+        <a href="tel:558132412823" class="hidden sm:inline-flex items-center gap-1.5 font-semibold hover:underline shrink-0">
+          <i class="fa-solid fa-phone-volume text-[11px]"></i>
+          (81) 3241-2823
+        </a>
+      </div>
+    </div>
+
+    <!-- Container Principal do Header -->
+    <div class="max-w-6xl mx-auto px-4 pt-3 pb-3.5">
+      <div class="flex items-center justify-between gap-3">
+        <!-- Logo Oficial + Endereço -->
+        <a href="#topo" class="flex items-center gap-3 group focus:outline-none">
+          <!-- Logo Vetorial Criada Sob Medida (Cruz + Coração & Folha Saúde e Beleza) -->
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-brand-redLight border border-red-100 flex items-center justify-center shadow-sm shrink-0 group-hover:scale-105 transition-transform">
+            <svg viewBox="0 0 100 100" class="w-8 h-8 sm:w-9 sm:h-9" fill="none" aria-hidden="true">
+              <path d="M35 8C35 3.6 38.6 0 43 0H57C61.4 0 65 3.6 65 8V35H92C96.4 35 100 38.6 100 43V57C100 61.4 96.4 65 92 65H65V92C65 96.4 61.4 100 57 100H43C38.6 100 35 96.4 35 92V65H8C3.6 65 0 61.4 0 57V43C0 38.6 3.6 35 8 35H35V8Z" fill="#D32F2F"/>
+              <path d="M50 0H57C61.4 0 65 3.6 65 8V35H92C96.4 35 100 38.6 100 43V57C100 61.4 96.4 65 92 65H65V92C65 96.4 61.4 100 57 100H50V0Z" fill="#B71C1C" fill-opacity="0.35"/>
+              <path d="M50 73C50 73 30 59.5 30 46.5C30 39.8 35.2 35 41.5 35C45.3 35 48.4 37 50 40C51.6 37 54.7 35 58.5 35C64.8 35 70 39.8 70 46.5C70 59.5 50 73 50 73Z" fill="#FFFFFF"/>
+              <path d="M50 35C50 25 58 17 68 17C68 27 60 35 50 35Z" fill="#FFFFFF"/>
+              <path d="M52.5 32.8C53.2 25.8 58.8 20.2 65.8 19.5C65.1 26.5 59.5 32.1 52.5 32.8Z" fill="#0D9488"/>
+              <path d="M49 35C42 35 37 30 37 23C44 23 49 28 49 35Z" fill="#FFFFFF"/>
+            </svg>
+          </div>
+
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900 leading-none">
+                Farmácia <span class="text-brand-red">Cidade</span>
+              </h1>
+              <span class="hidden xs:inline-block text-[10px] font-bold uppercase tracking-wider bg-brand-redLight text-brand-red px-2 py-0.5 rounded-full border border-red-100">
+                Saúde &amp; Beleza
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 font-medium mt-1 flex items-center gap-1">
+              <i class="fa-solid fa-location-dot text-brand-red text-[11px]"></i>
+              <span>Hipódromo • Estrada de Belém, 649</span>
+            </p>
+          </div>
+        </a>
+
+        <!-- Ações Rápidas Desktop + Botão do Carrinho -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Avaliação Google (Prova Social) -->
+          <div class="hidden lg:flex items-center gap-1.5 bg-amber-50 border border-amber-200/70 px-3 py-1.5 rounded-xl text-xs font-semibold text-amber-900">
+            <i class="fa-solid fa-star text-amber-400"></i>
+            <span>4,7 no Google</span>
+            <span class="text-amber-700/70 font-normal">(Hipódromo)</span>
+          </div>
+
+          <!-- Selo Dinâmico Desktop/Tablet Visível -->
+          <div id="header-open-pill" class="hidden md:inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1.5 rounded-xl text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+            <span>Entrega Grátis no Hipódromo</span>
+          </div>
+
+          <!-- Botão Abrir Carrinho -->
+          <button
+            onclick="toggleCart(true)"
+            aria-label="Abrir carrinho de compras"
+            class="relative inline-flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 active:scale-95 text-white px-3.5 py-2.5 rounded-2xl transition-all shadow-sm"
+          >
+            <i class="fa-solid fa-basket-shopping text-base"></i>
+            <span class="hidden sm:inline text-sm font-bold">Cesta</span>
+            <span
+              id="header-cart-count"
+              class="min-w-[22px] h-[22px] px-1.5 rounded-full bg-brand-red text-white text-xs font-extrabold flex items-center justify-center shadow-sm"
+            >
+              0
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Busca em Tempo Real -->
+      <div class="mt-3 relative">
+        <label for="search-input" class="sr-only">Buscar medicamentos, fraldas ou higiene</label>
+        <div class="relative flex items-center">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 text-slate-400 text-sm pointer-events-none"></i>
+          <input
+            id="search-input"
+            type="search"
+             autocomplete="off"
+            placeholder="Buscar remédio, Giovanni Baby, fralda, vitamina..."
+            class="w-full pl-11 pr-10 py-3 bg-slate-100/90 focus:bg-white text-sm text-slate-800 placeholder-slate-400 rounded-2xl border border-slate-200/80 focus:border-brand-red focus:ring-4 focus:ring-brand-red/10 focus:outline-none transition-all"
+          />
+          <button
+            id="clear-search-btn"
+            type="button"
+            onclick="clearSearch()"
+            aria-label="Limpar busca"
+            class="hidden absolute right-3 w-7 h-7 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 items-center justify-center text-xs transition"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- CONTEÚDO PRINCIPAL                                        -->
+  <!-- ========================================================= -->
+  <main class="max-w-6xl mx-auto px-4 pt-5 space-y-6">
+
+    <!-- ======================================================= -->
+    <!-- 2. BANNER PRINCIPAL (DESTAQUE RECEITA MÉDICA & WHATSAPP)-->
+    <!-- ======================================================= -->
+    <section aria-label="Atendimento farmacêutico e envio de receita">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#D32F2F] via-[#C62828] to-[#991B1B] text-white p-5 sm:p-7 md:p-8 shadow-lg shadow-red-700/15">
+        <!-- Elementos Decorativos de Fundo -->
+        <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+        <div class="absolute right-6 bottom-4 opacity-10 pointer-events-none hidden sm:block">
+          <i class="fa-solid fa-notes-medical text-[120px]"></i>
+        </div>
+
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <div class="max-w-xl space-y-2.5">
+            <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">
+              <i class="fa-solid fa-user-doctor text-amber-300"></i>
+              <span>Atendimento Farmacêutico Rápido</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight">
+              Tem receita médica ou procura um medicamento específico?
+            </h2>
+
+            <p class="text-sm sm:text-base text-red-50/95 leading-relaxed">
+              Mande uma foto da sua receita ou pergunte a disponibilidade agora mesmo. Respondemos rapidinho e entregamos na porta da sua casa!
+            </p>
+
+            <!-- Mini Vantagens Locais -->
+            <div class="pt-1 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-semibold text-red-100">
+              <span class="inline-flex items-center gap-1.5">
+                <i class="fa-solid fa-bolt text-amber-300"></i> Entrega grátis no Hipódromo
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <i class="fa-solid fa-credit-card text-amber-300"></i> Levamos maquineta
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <i class="fa-brands fa-pix text-amber-300"></i> Aceitamos Pix
+              </span>
+            </div>
+          </div>
+
+          <!-- CTA Direto WhatsApp -->
+          <div class="shrink-0">
+            <a
+              href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20um%20medicamento%20%2F%20enviar%20uma%20receita%20para%20a%20Farm%C3%A1cia%20Cidade."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1EBE5D] active:scale-[0.98] text-white font-extrabold text-sm sm:text-base px-6 py-4 rounded-2xl shadow-xl shadow-black/20 transition-all group"
+            >
+              <i class="fa-brands fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i>
+              <span>Enviar Receita ou Pedir Remédio Agora</span>
+            </a>
+            <p class="text-[11px] text-center text-red-100/90 mt-2 font-medium">
+              <i class="fa-regular fa-clock mr-1"></i> Seg a Sáb, das 8h às 21h • Resposta em minutos
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 3. FILTRO POR CATEGORIAS (ABAS DESLIZÁVEIS)             -->
+    <!-- ======================================================= -->
+    <section id="categorias-section" aria-label="Categorias de produtos" class="pt-1">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base sm:text-lg font-extrabold text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-tags text-brand-red text-sm"></i>
+          Categorias
+        </h2>
+        <span id="results-counter" class="text-xs font-semibold text-slate-500">
+          10 produtos disponíveis
+        </span>
+      </div>
+
+      <div
+        id="category-tabs"
+        role="tablist"
+        class="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 sm:mx-0 sm:px-0"
+      >
+        <!-- Renderizado dinamicamente via JS para sincronia total -->
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 4. CATÁLOGO DE PRODUTOS                                 -->
+    <!-- ======================================================= -->
+    <section id="catalogo" aria-label="Catálogo de Produtos">
+      <div
+        id="products-grid"
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5 sm:gap-5"
+      >
+        <!-- Cards injetados pelo JavaScript -->
+      </div>
+
+      <!-- Estado Vazio de Busca (Alta Conversão: redireciona pro WhatsApp!) -->
+      <div
+        id="empty-state"
+        class="hidden bg-white rounded-3xl border border-slate-200/80 p-8 text-center max-w-lg mx-auto my-6 shadow-card"
+      >
+        <div class="w-16 h-16 rounded-2xl bg-brand-redLight text-brand-red flex items-center justify-center mx-auto mb-4 text-2xl">
+          <i class="fa-solid fa-prescription-bottle-medical"></i>
+        </div>
+        <h3 class="text-lg font-extrabold text-slate-900">
+          Não encontrou na vitrine rápida?
+        </h3>
+        <p class="text-sm text-slate-500 mt-1.5 leading-relaxed">
+          Trabalhamos com milhares de medicamentos éticos, genéricos e perfumaria na loja física da <strong>Estrada de Belém, 649</strong>. Consulte nosso balcão pelo WhatsApp!
+        </p>
+        <div class="mt-5 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+          <button
+            type="button"
+            onclick="resetFilters()"
+            class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-50 transition"
+          >
+            Ver todos os itens
+          </button>
+          <a
+            id="empty-whatsapp-link"
+            href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20um%20medicamento%20%2F%20enviar%20uma%20receita%20para%20a%20Farm%C3%A1cia%20Cidade."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-sm shadow-sm transition"
+          >
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            Consultar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- BANNER DE CONFIANÇA LOCAL (BAIRRO)                      -->
+    <!-- ======================================================= -->
+    <section aria-label="Diferenciais da Farmácia Cidade" class="pt-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+        <div class="bg-white rounded-2xl p-4 border border-slate-200/70 shadow-card flex items-start gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-red-50 text-brand-red flex items-center justify-center shrink-0 text-lg">
+            <i class="fa-solid fa-motorcycle"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-sm text-slate-900">Entrega Rápida na Região</h3>
+            <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">
+              Grátis no Hipódromo e taxa reduzida para Encruzilhada, Campo Grande, Rosarinho e Torreão.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-4 border border-slate-200/70 shadow-card flex items-start gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 text-lg">
+            <i class="fa-solid fa-shield-heart"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-sm text-slate-900">Farmácia de Confiança</h3>
+            <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">
+              Produtos 100% originais, medicamentos armazenados com rigor e atendimento humano de vizinho.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-4 border border-slate-200/70 shadow-card flex items-start gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 text-lg">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-sm text-slate-900">Pagamento na Entrega</h3>
+            <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">
+              Pague com Pix, Cartão de Crédito/Débito na maquineta do entregador ou em Dinheiro.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- 6. RODAPÉ INFORMATIVO COMPLETO                            -->
+  <!-- ========================================================= -->
+  <footer id="contato" class="mt-12 bg-white border-t border-slate-200/90">
+    <div class="max-w-6xl mx-auto px-4 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Coluna 1: Marca -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center text-white shadow-sm">
+              <i class="fa-solid fa-kit-medical text-lg"></i>
+            </div>
+            <div>
+              <h2 class="font-extrabold text-base text-slate-900 leading-none">
+                Farmácia <span class="text-brand-red">Cidade</span>
+              </h2>
+              <span class="text-xs text-slate-500 font-semibold">Saúde &amp; Beleza</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Sua farmácia de bairro no coração do Hipódromo e Encruzilhada. Cuidando da saúde e do bem-estar da sua família com preço justo e agilidade.
+          </p>
+          <div class="inline-flex items-center gap-2 text-xs font-bold text-brand-red bg-brand-redLight px-3 py-1.5 rounded-xl">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Atendimento local exclusivo em Recife - PE</span>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Endereço e Horário -->
+        <div class="space-y-2.5 text-sm">
+          <h3 class="font-extrabold text-slate-900 text-sm uppercase tracking-wider">
+            Onde Estamos &amp; Horário
+          </h3>
+          <p class="text-xs text-slate-600 flex items-start gap-2.5 leading-relaxed">
+            <i class="fa-solid fa-location-dot text-brand-red mt-0.5 shrink-0"></i>
+            <span>
+              <strong>Estrada de Belém, 649 - Loja 1</strong><br />
+              Hipódromo / Encruzilhada, Recife - PE<br />
+              CEP: 52030-000
+            </span>
+          </p>
+          <p class="text-xs text-slate-600 flex items-center gap-2.5">
+            <i class="fa-regular fa-clock text-brand-red shrink-0"></i>
+            <span><strong>Segunda a Sábado:</strong> das 8h às 21h</span>
+          </p>
+          <div class="pt-1">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Estrada+de+Belem+649+Hipodromo+Recife+PE"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-red hover:underline"
+            >
+              <i class="fa-solid fa-map-location-dot"></i>
+              Como chegar pelo Google Maps
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna 3: Canais de Atendimento -->
+        <div class="space-y-3">
+          <h3 class="font-extrabold text-slate-900 text-sm uppercase tracking-wider">
+            Central de Pedidos
+          </h3>
+          <div class="flex flex-col gap-2.5">
+            <a
+              href="tel:558132412823"
+              class="inline-flex items-center gap-3 p-3 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 transition text-xs font-bold text-slate-800"
+            >
+              <span class="w-8 h-8 rounded-xl bg-brand-redLight text-brand-red flex items-center justify-center">
+                <i class="fa-solid fa-phone"></i>
+              </span>
+              <div>
+                <span class="block text-[11px] text-slate-400 font-medium">Telefone Fixo da Loja</span>
+                <span class="text-sm font-extrabold">(81) 3241-2823</span>
+              </div>
+            </a>
+
+            <a
+              href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Farm%C3%A1cia%20Cidade%20e%20gostaria%20de%20atendimento."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 p-3 rounded-2xl bg-emerald-50/70 hover:bg-emerald-50 border border-emerald-200/80 transition text-xs font-bold text-emerald-950"
+            >
+              <span class="w-8 h-8 rounded-xl bg-[#25D366] text-white flex items-center justify-center">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+              </span>
+              <div>
+                <span class="block text-[11px] text-emerald-700 font-medium">WhatsApp Delivery Rápido</span>
+                <span class="text-sm font-extrabold">Pedir pelo WhatsApp</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aviso Sanitário & Copyright -->
+      <div class="mt-8 pt-6 border-t border-slate-100 text-center space-y-1.5">
+        <p class="text-[11px] text-slate-400 max-w-3xl mx-auto">
+          As informações contidas neste catálogo rápido têm caráter informativo. Medicamentos sujeitos a prescrição médica somente são comercializados mediante apresentação/retenção da receita, conforme legislação da ANVISA. Se persistirem os sintomas, o médico ou farmacêutico deverá ser consultado.
+        </p>
+        <p class="text-xs font-semibold text-slate-500">
+          &copy; <span id="current-year">2026</span> Farmácia Cidade - Saúde &amp; Beleza • Estrada de Belém, 649 - Recife/PE.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================= -->
+  <!-- BARRA FLUTUANTE DE RESUMO DA SACOLA (MOBILE HIGH-CONVERT) -->
+  <!-- ========================================================= -->
+  <div
+    id="floating-cart-bar"
+    class="hidden fixed bottom-[72px] inset-x-0 z-30 px-4 md:hidden pointer-events-none"
+  >
+    <button
+      type="button"
+      onclick="toggleCart(true)"
+      class="pointer-events-auto w-full bg-brand-red hover:bg-brand-redDark active:scale-[0.99] text-white rounded-2xl px-4 py-3 shadow-xl shadow-red-900/25 flex items-center justify-between transition-all"
+    >
+      <div class="flex items-center gap-2.5">
+        <span id="floating-cart-qty" class="w-7 h-7 rounded-xl bg-white/20 font-extrabold text-xs flex items-center justify-center">
+          0
+        </span>
+        <span class="text-sm font-bold">Ver minha cesta</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span id="floating-cart-total" class="text-sm font-extrabold">R$ 0,00</span>
+        <i class="fa-solid fa-chevron-right text-xs opacity-80"></i>
+      </div>
+    </button>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- BARRA DE NAVEGAÇÃO INFERIOR FIXA NO MOBILE (ESTILO APP)   -->
+  <!-- ========================================================= -->
+  <nav
+    aria-label="Navegação inferior mobile"
+    class="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white border-t border-slate-200/90 shadow-nav pb-safe"
+  >
+    <div class="grid grid-cols-4 h-16">
+      <a
+        href="#topo"
+        onclick="setMobileNavActive('inicio')"
+        data-nav="inicio"
+        class="mobile-nav-btn flex flex-col items-center justify-center gap-1 text-brand-red font-bold text-[11px]"
+      >
+        <i class="fa-solid fa-house text-base"></i>
+        <span>Início</span>
+      </a>
+
+      <button
+        type="button"
+        onclick="focusSearchMobile()"
+        data-nav="buscar"
+        class="mobile-nav-btn flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-brand-red font-semibold text-[11px]"
+      >
+        <i class="fa-solid fa-magnifying-glass text-base"></i>
+        <span>Buscar</span>
+      </button>
+
+      <a
+        href="https://wa.me/5581999999999?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20um%20medicamento%20%2F%20enviar%20uma%20receita%20para%20a%20Farm%C3%A1cia%20Cidade."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col items-center justify-center gap-1 text-[#1da851] font-bold text-[11px]"
+      >
+        <i class="fa-solid fa-file-medical text-base"></i>
+        <span>Receita</span>
+      </a>
+
+      <button
+        type="button"
+        onclick="toggleCart(true)"
+        data-nav="carrinho"
+        class="mobile-nav-btn relative flex flex-col items-center justify-center gap-1 text-slate-500 hover:text-brand-red font-semibold text-[11px]"
+      >
+        <div class="relative">
+          <i class="fa-solid fa-basket-shopping text-base"></i>
+          <span
+            id="mobile-cart-count"
+            class="hidden -top-2 -right-3 absolute min-w-[18px] h-[18px] px-1 rounded-full bg-brand-red text-white text-[10px] font-extrabold items-center justify-center"
+          >
+            0
+          </span>
+        </div>
+        <span>Carrinho</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================================= -->
+  <!-- 5. CARRINHO DE COMPRAS INTERATIVO (GAVETA / DRAWER)       -->
+  <!-- ========================================================= -->
+  <div
+    id="cart-overlay"
+    onclick="toggleCart(false)"
+    class="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
+    aria-hidden="true"
+  ></div>
+
+  <aside
+    id="cart-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cart-title"
+    class="fixed top-0 right-0 bottom-0 z-50 w-full max-w-md bg-white shadow-2xl translate-x-full transition-transform duration-300 ease-out flex flex-col"
+  >
+    <!-- Cabeçalho da Gaveta -->
+    <div class="px-5 py-4 bg-white border-b border-slate-200 flex items-center justify-between shrink-0">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-brand-redLight text-brand-red flex items-center justify-center">
+          <i class="fa-solid fa-basket-shopping"></i>
+        </div>
+        <div>
+          <h2 id="cart-title" class="font-extrabold text-base text-slate-900 leading-tight">
+            Sua Cesta de Pedidos
+          </h2>
+          <p id="drawer-subtitle" class="text-xs text-slate-500 font-medium">
+            Farmácia Cidade • Hipódromo
+          </p>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onclick="toggleCart(false)"
+        aria-label="Fechar carrinho"
+        class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition"
+      >
+        <i class="fa-solid fa-xmark text-base"></i>
+      </button>
+    </div>
+
+    <!-- Corpo Rolável (Itens + Dados de Entrega) -->
+    <div class="flex-1 overflow-y-auto px-5 py-4 space-y-5 bg-slate-50/70">
+
+      <!-- Estado Cesta Vazia -->
+      <div id="cart-empty-view" class="py-12 text-center space-y-3">
+        <div class="w-16 h-16 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto text-2xl">
+          <i class="fa-solid fa-cart-plus"></i>
+        </div>
+        <h3 class="font-extrabold text-base text-slate-800">Sua cesta está vazia</h3>
+        <p class="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
+          Adicione ofertas do catálogo ou envie sua receita médica direto para nosso WhatsApp.
+        </p>
+        <button
+          type="button"
+          onclick="toggleCart(false)"
+          class="mt-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-red text-white text-xs font-bold shadow-sm hover:bg-brand-redDark transition"
+        >
+          Explorar Ofertas
+        </button>
+      </div>
+
+      <!-- Conteúdo com Produtos -->
+      <div id="cart-filled-view" class="hidden space-y-5">
+        <!-- Lista de Itens -->
+        <div>
+          <div class="flex items-center justify-between mb-2.5">
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-500">
+              Itens Selecionados
+            </h3>
+            <button
+              type="button"
+              onclick="clearCart()"
+              class="text-xs font-semibold text-red-600 hover:underline"
+            >
+              Limpar cesta
+            </button>
+          </div>
+          <div id="cart-items-list" class="space-y-2.5">
+            <!-- Itens renderizados via JS -->
+          </div>
+        </div>
+
+        <!-- Formulário de Entrega e Pagamento -->
+        <form id="checkout-form" onsubmit="handleCheckout(event)" class="space-y-4 bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+          <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+            <i class="fa-solid fa-truck-fast text-brand-red"></i>
+            Entrega &amp; Pagamento
+          </h3>
+
+          <!-- Seletor de Bairro / Taxa -->
+          <div>
+            <label for="neighborhood-select" class="block text-xs font-bold text-slate-700 mb-1">
+              Bairro / Modalidade de Entrega *
+            </label>
+            <select
+              id="neighborhood-select"
+              onchange="updateTotals()"
+              required
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm font-semibold text-slate-800 focus:bg-white focus:border-brand-red focus:ring-2 focus:ring-brand-red/15 focus:outline-none"
+            >
+              <option value="Hipódromo|0">Hipódromo — Grátis (R$ 0,00)</option>
+              <option value="Encruzilhada|3">Encruzilhada — R$ 3,00</option>
+              <option value="Campo Grande|4">Campo Grande — R$ 4,00</option>
+              <option value="Rosarinho|4">Rosarinho — R$ 4,00</option>
+              <option value="Torreão|4">Torreão — R$ 4,00</option>
+              <option value="Retirada na Loja|0">Retirada na Loja (Estr. de Belém, 649) — Grátis</option>
+            </select>
+          </div>
+
+          <!-- Nome do Cliente -->
+          <div>
+            <label for="customer-name" class="block text-xs font-bold text-slate-700 mb-1">
+              Seu Nome *
+            </label>
+            <input
+              id="customer-name"
+              type="text"
+              required
+              placeholder="Ex: Maria Silva"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:border-brand-red focus:ring-2 focus:ring-brand-red/15 focus:outline-none"
+            />
+          </div>
+
+          <!-- Endereço (Rua e Número) -->
+          <div id="address-field-wrapper">
+            <label for="customer-address" class="block text-xs font-bold text-slate-700 mb-1">
+              Endereço Completo (Rua, Número e Apto/Ref.) *
+            </label>
+            <input
+              id="customer-address"
+              type="text"
+              required
+              placeholder="Ex: Estrada de Belém, 720, Apto 102"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:border-brand-red focus:ring-2 focus:ring-brand-red/15 focus:outline-none"
+            />
+          </div>
+
+          <!-- Forma de Pagamento -->
+          <div>
+            <label for="payment-select" class="block text-xs font-bold text-slate-700 mb-1">
+              Forma de Pagamento *
+            </label>
+            <select
+              id="payment-select"
+              onchange="toggleChangeField()"
+              required
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm font-semibold text-slate-800 focus:bg-white focus:border-brand-red focus:ring-2 focus:ring-brand-red/15 focus:outline-none"
+            >
+              <option value="Pix">Pix (Chave enviada no WhatsApp)</option>
+              <option value="Cartão na Entrega">Cartão na Entrega (Levamos maquineta)</option>
+              <option value="Dinheiro">Dinheiro</option>
+            </select>
+          </div>
+
+          <!-- Campo condicional de Troco (UX extra para Dinheiro) -->
+          <div id="change-wrapper" class="hidden">
+            <label for="cash-change" class="block text-xs font-bold text-slate-700 mb-1">
+              Precisa de troco para quanto? (Opcional)
+            </label>
+            <input
+              id="cash-change"
+              type="text"
+              placeholder="Ex: Troco para R$ 50,00 (ou Não precisa)"
+              class="w-full px-3.5 py-2 rounded-xl bg-amber-50/60 border border-amber-200 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:border-brand-red focus:outline-none"
+            />
+          </div>
+
+          <!-- Alerta de validação suave -->
+          <p id="form-error-msg" class="hidden text-xs font-bold text-brand-red bg-brand-redLight px-3 py-2 rounded-xl">
+            Por favor, preencha seu nome e endereço para finalizar o pedido.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Rodapé Fixo da Gaveta (Resumo Financeiro + Botão WhatsApp) -->
+    <div id="cart-footer" class="hidden px-5 py-4 bg-white border-t border-slate-200 space-y-3 shrink-0">
+      <div class="space-y-1 text-xs">
+        <div class="flex justify-between text-slate-500 font-medium">
+          <span>Subtotal dos produtos</span>
+          <span id="summary-subtotal">R$ 0,00</span>
+        </div>
+        <div class="flex justify-between text-slate-500 font-medium">
+          <span>Taxa de entrega (<span id="summary-neighborhood">Hipódromo</span>)</span>
+          <span id="summary-delivery" class="font-bold text-emerald-600">Grátis</span>
+        </div>
+        <div class="flex justify-between text-base font-extrabold text-slate-900 pt-1.5 border-t border-slate-100">
+          <span>Total a pagar</span>
+          <span id="summary-total" class="text-brand-red">R$ 0,00</span>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        form="checkout-form"
+        class="w-full py-3.5 px-5 rounded-2xl bg-[#25D366] hover:bg-[#1EBE5D] active:scale-[0.99] text-white font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-600/20 flex items-center justify-center gap-2.5 transition-all"
+      >
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        <span>Finalizar Pedido no WhatsApp</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================= -->
+  <!-- TOAST NOTIFICATION (FEEDBACK DE ADIÇÃO AO CARRINHO)       -->
+  <!-- ========================================================= -->
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+    class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2 opacity-0 -translate-y-3 pointer-events-none transition-all duration-200"
+  >
+    <i class="fa-solid fa-circle-check text-[#25D366] text-sm"></i>
+    <span id="toast-message">Produto adicionado à cesta!</span>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- LÓGICA JAVASCRIPT PURO (CATÁLOGO, FILTROS, CARRINHO, WA)  -->
+  <!-- ========================================================= -->
+  <script>
+    // Número oficial de redirecionamento do WhatsApp (conforme especificação)
+    const WHATSAPP_NUMBER = '5581999999999';
+
+    // Categorias obrigatórias
+    const CATEGORIES = [
+      { id: 'Todos', label: 'Todos', icon: 'fa-border-all' },
+      { id: 'Ofertas do Dia', label: 'Ofertas do Dia', icon: 'fa-fire' },
+      { id: 'Infantil & Fraldas', label: 'Infantil & Fraldas', icon: 'fa-baby' },
+      { id: 'Higiene & Beleza', label: 'Higiene & Beleza', icon: 'fa-wand-magic-sparkles' },
+      { id: 'Vitaminas & Suplementos', label: 'Vitaminas & Suplementos', icon: 'fa-capsules' }
+    ];
+
+    // Catálogo realista de 10 produtos pré-cadastrados (com ícones/ilustrações limpas)
+    const PRODUCTS = [
+      {
+        id: 1,
+        name: 'Gel Higienizante Giovanni Baby 500ml',
+        unit: 'Frasco Pump 500ml • Álcool 70% Hidratante',
+        categories: ['Higiene & Beleza', 'Ofertas do Dia'],
+        keywords: 'giovanna baby giovanni alcool em gel antisseptico maos rosa classic',
+        oldPrice: 26.90,
+        price: 19.90,
+        icon: 'fa-pump-soap',
+        accentBg: 'bg-pink-50',
+        accentText: 'text-pink-500'
+      },
+      {
+        id: 2,
+        name: 'Fralda Descartável Pacote Mega',
+        unit: 'Pampers Confort Sec • Tam. M / G / XG',
+        categories: ['Infantil & Fraldas', 'Ofertas do Dia'],
+        keywords: 'fraldas bebe infantil pampers huggies pacote mega enxoval',
+        oldPrice: 69.90,
+        price: 54.90,
+        icon: 'fa-baby',
+        accentBg: 'bg-sky-50',
+        accentText: 'text-sky-500'
+      },
+      {
+        id: 3,
+        name: 'Protetor Solar FPS 50 Toque Seco',
+        unit: 'Loção Oil Free 200ml • UVA/UVB',
+        categories: ['Higiene & Beleza', 'Ofertas do Dia'],
+        keywords: 'bloqueador filtro solar praia pele rosto corpo verao',
+        oldPrice: 58.90,
+        price: 42.90,
+        icon: 'fa-sun',
+        accentBg: 'bg-amber-50',
+        accentText: 'text-amber-500'
+      },
+      {
+        id: 4,
+        name: 'Vitamina C 1g + Zinco Efervescente',
+        unit: 'Tubo c/ 30 comprimidos sabor laranja',
+        categories: ['Vitaminas & Suplementos', 'Ofertas do Dia'],
+        keywords: 'imunidade gripe resfriado redoxon cewin zinco',
+        oldPrice: 29.90,
+        price: 18.90,
+        icon: 'fa-lemon',
+        accentBg: 'bg-orange-50',
+        accentText: 'text-orange-500'
+      },
+      {
+        id: 5,
+        name: 'Dipirona Sódica 500mg',
+        unit: 'Cartela c/ 10 comprimidos • Analgésico e Antitérmico',
+        categories: ['Ofertas do Dia'],
+        keywords: 'dor de cabeca febre novalgina dorflex remedio comprimido',
+        oldPrice: 8.50,
+        price: 4.99,
+        icon: 'fa-tablets',
+        accentBg: 'bg-red-50',
+        accentText: 'text-brand-red'
+      },
+      {
+        id: 6,
+        name: 'Sabonete Líquido Infantil Da Cabeça aos Pés',
+        unit: 'Frasco 400ml • Hipoalergênico sem lágrimas',
+        categories: ['Infantil & Fraldas', 'Higiene & Beleza'],
+        keywords: 'banho bebe recem nascido johnsons granado infantil',
+        oldPrice: 28.90,
+        price: 21.50,
+        icon: 'fa-soap',
+        accentBg: 'bg-cyan-50',
+        accentText: 'text-cyan-600'
+      },
+      {
+        id: 7,
+        name: 'Lenços Umedecidos Infantil Hipoalergênico',
+        unit: 'Pacote Econômico c/ 96 unidades • Com Aloe Vera',
+        categories: ['Infantil & Fraldas', 'Ofertas do Dia'],
+        keywords: 'lenco umedecido troca fralda bebe limpeza suave',
+        oldPrice: 19.90,
+        price: 13.90,
+        icon: 'fa-box-tissue',
+        accentBg: 'bg-teal-50',
+        accentText: 'text-teal-600'
+      },
+      {
+        id: 8,
+        name: 'Ômega 3 1000mg Óleo de Peixe Puro',
+        unit: 'Frasco c/ 60 cápsulas • Saúde Cardiovascular',
+        categories: ['Vitaminas & Suplementos'],
+        keywords: 'omega 3 colesterol memoria coracao suplemento capsula',
+        oldPrice: 49.90,
+        price: 34.90,
+        icon: 'fa-heart-pulse',
+        accentBg: 'bg-rose-50',
+        accentText: 'text-rose-600'
+      },
+      {
+        id: 9,
+        name: 'Desodorante Aerosol Antitranspirante 48h',
+        unit: '150ml • Jato Seco Invisível (Masc / Fem)',
+        categories: ['Higiene & Beleza'],
+        keywords: 'rexona dove nivea higiene axilas perfumaria',
+        oldPrice: 19.50,
+        price: 14.90,
+        icon: 'fa-spray-can-sparkles',
+        accentBg: 'bg-indigo-50',
+        accentText: 'text-indigo-500'
+      },
+      {
+        id: 10,
+        name: 'Polivitamínico A-Z Energia & Imunidade',
+        unit: 'Caixa c/ 60 cápsulas • Uso diário adulto',
+        categories: ['Vitaminas & Suplementos', 'Ofertas do Dia'],
+        keywords: 'multivitaminico centrum lavitan vitaminas complexo b disposicao',
+        oldPrice: 44.90,
+        price: 27.90,
+        icon: 'fa-capsules',
+        accentBg: 'bg-emerald-50',
+        accentText: 'text-emerald-600'
+      }
+    ];
+
+    // Estado da Aplicação (persistido em localStorage para experiência PWA real)
+    let activeCategory = 'Todos';
+    let searchQuery = '';
+    let cart = [];
+
+    try {
+      const savedCart = localStorage.getItem('farmacia_cidade_cart');
+      if (savedCart) cart = JSON.parse(savedCart);
+    } catch (e) {
+      cart = [];
+    }
+
+    // Utilitário de Moeda BRL
+    function formatBRL(value) {
+      return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    // Remove acentos para busca inteligente em tempo real
+    function normalizeText(str) {
+      return str
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+    }
+
+    // Atualiza status dinâmico conforme horário comercial (Seg a Sáb, 8h às 21h)
+    function updateDynamicStoreStatus() {
+      const now = new Date();
+      const day = now.getDay(); // 0 = Domingo, 1..6 = Seg..Sáb
+      const hour = now.getHours();
+      const isOpen = day >= 1 && day <= 6 && hour >= 8 && hour < 21;
+
+      const statusTextEl = document.getElementById('status-badge-text');
+      const statusDotEl = document.getElementById('status-dot');
+
+      if (isOpen) {
+        statusTextEl.textContent = 'Aberto agora • Entrega rápida no bairro';
+        statusDotEl.innerHTML = `
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-85"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]"></span>
+        `;
+      } else {
+        statusTextEl.textContent = 'Atendimento Seg a Sáb (8h às 21h) • Envie seu pedido no WhatsApp';
+        statusDotEl.innerHTML = `
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-300"></span>
+        `;
+      }
+    }
+
+    // Renderiza Abas Deslizáveis de Categorias
+    function renderCategories() {
+      const container = document.getElementById('category-tabs');
+      container.innerHTML = CATEGORIES.map((cat) => {
+        const isActive = cat.id === activeCategory;
+        const btnClass = isActive
+          ? 'bg-brand-red text-white shadow-md shadow-red-600/20 border-brand-red'
+          : 'bg-white text-slate-600 hover:text-brand-red hover:border-red-200 border-slate-200/90';
+
+        return `
+          <button
+            type="button"
+            role="tab"
+            aria-selected="${isActive}"
+            onclick="selectCategory('${cat.id}')"
+            class="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl border text-xs sm:text-sm font-bold transition-all active:scale-95 ${btnClass}"
+          >
+            <i class="fa-solid ${cat.icon} text-xs"></i>
+            <span>${cat.label}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectCategory(categoryId) {
+      activeCategory = categoryId;
+      renderCategories();
+      renderProducts();
+    }
+
+    // Filtra e Renderiza Catálogo de Produtos
+    function renderProducts() {
+      const grid = document.getElementById('products-grid');
+      const emptyState = document.getElementById('empty-state');
+      const counter = document.getElementById('results-counter');
+
+      const normQuery = normalizeText(searchQuery.trim());
+
+      const filtered = PRODUCTS.filter((product) => {
+        const matchesCategory =
+          activeCategory === 'Todos' || product.categories.includes(activeCategory);
+
+        if (!normQuery) return matchesCategory;
+
+        const searchable = normalizeText(
+          `${product.name} ${product.unit} ${product.categories.join(' ')} ${product.keywords}`
+        );
+        return matchesCategory && searchable.includes(normQuery);
+      });
+
+      counter.textContent =
+        filtered.length === 1
+          ? '1 produto encontrado'
+          : `${filtered.length} produtos disponíveis`;
+
+      if (filtered.length === 0) {
+        grid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+
+        // Personaliza link do WhatsApp com o termo pesquisado
+        const emptyWaLink = document.getElementById('empty-whatsapp-link');
+        const customMsg = searchQuery.trim()
+          ? `Olá! Procurei por "${searchQuery.trim()}" no site da Farmácia Cidade e gostaria de consultar disponibilidade e preço.`
+          : 'Olá! Gostaria de consultar um medicamento / enviar uma receita para a Farmácia Cidade.';
+        emptyWaLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(customMsg)}`;
+        return;
+      }
+
+      grid.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map((product) => {
+        const discountPct = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+        const inCartItem = cart.find((item) => item.id === product.id);
+        const qtyInCart = inCartItem ? inCartItem.qty : 0;
+
+        return `
+          <article class="bg-white rounded-2xl border border-slate-200/75 p-3.5 sm:p-4 shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between group relative">
+            <!-- Badge de Desconto -->
+            <div class="flex items-center justify-between gap-1 mb-2.5">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-lg bg-brand-red text-white text-[11px] font-extrabold tracking-tight">
+                -${discountPct}% OFF
+              </span>
+              ${
+                qtyInCart > 0
+                  ? `<span class="inline-flex items-center gap-1 text-[11px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200">
+                      <i class="fa-solid fa-check text-[10px]"></i> ${qtyInCart} na cesta
+                    </span>`
+                  : ''
+              }
+            </div>
+
+            <!-- Área Visual do Produto -->
+            <div class="w-full h-28 sm:h-32 rounded-2xl ${product.accentBg} flex items-center justify-center mb-3 relative overflow-hidden">
+              <i class="fa-solid ${product.icon} text-4xl sm:text-5xl ${product.accentText} group-hover:scale-110 transition-transform duration-300"></i>
+            </div>
+
+            <!-- Informações do Produto -->
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
+                  ${product.categories[0]}
+                </span>
+                <h3 class="text-xs sm:text-sm font-extrabold text-slate-900 leading-snug line-clamp-2">
+                  ${product.name}
+                </h3>
+                <p class="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                  ${product.unit}
+                </p>
+              </div>
+
+              <!-- Preço e Botão + Adicionar -->
+              <div class="mt-3.5 pt-2.5 border-t border-slate-100">
+                <span class="block text-[11px] text-slate-400 line-through font-medium">
+                  De ${formatBRL(product.oldPrice)}
+                </span>
+                <div class="flex items-baseline gap-1 mt-0.5">
+                  <span class="text-base sm:text-lg font-extrabold text-brand-red">
+                    ${formatBRL(product.price)}
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  onclick="addToCart(${product.id})"
+                  class="mt-2.5 w-full py-2.5 px-3 rounded-xl bg-brand-red hover:bg-brand-redDark active:scale-95 text-white font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-1.5 transition-all"
+                >
+                  <i class="fa-solid fa-plus text-xs"></i>
+                  <span>Adicionar</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // Funções de Busca
+    const searchInput = document.getElementById('search-input');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      if (searchQuery.trim().length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+        clearSearchBtn.classList.add('flex');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+        clearSearchBtn.classList.remove('flex');
+      }
+      renderProducts();
+    });
+
+    function clearSearch() {
+      searchQuery = '';
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      clearSearchBtn.classList.remove('flex');
+      renderProducts();
+      searchInput.focus();
+    }
+
+    function resetFilters() {
+      activeCategory = 'Todos';
+      searchQuery = '';
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      clearSearchBtn.classList.remove('flex');
+      renderCategories();
+      renderProducts();
+    }
+
+    function focusSearchMobile() {
+      setMobileNavActive('buscar');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => searchInput.focus(), 250);
+    }
+
+    function setMobileNavActive(target) {
+      document.querySelectorAll('.mobile-nav-btn').forEach((btn) => {
+        if (btn.dataset.nav === target) {
+          btn.classList.remove('text-slate-500', 'font-semibold');
+          btn.classList.add('text-brand-red', 'font-bold');
+        } else {
+          btn.classList.add('text-slate-500', 'font-semibold');
+          btn.classList.remove('text-brand-red', 'font-bold');
+        }
+      });
+    }
+
+    // Persistência e Operações do Carrinho
+    function saveCart() {
+      try {
+        localStorage.setItem('farmacia_cidade_cart', JSON.stringify(cart));
+      } catch (e) {}
+    }
+
+    function addToCart(productId) {
+      const product = PRODUCTS.find((p) => p.id === productId);
+      if (!product) return;
+
+      const existing = cart.find((item) => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: product.id, qty: 1 });
+      }
+
+      saveCart();
+      updateCartUI(true);
+      renderProducts();
+      showToast(`"${product.name}" adicionado!`);
+    }
+
+    function changeQty(productId, delta) {
+      const idx = cart.findIndex((item) => item.id === productId);
+      if (idx === -1) return;
+
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+      }
+
+      saveCart();
+      updateCartUI(false);
+      renderProducts();
+    }
+
+    function removeItem(productId) {
+      cart = cart.filter((item) => item.id !== productId);
+      saveCart();
+      updateCartUI(false);
+      renderProducts();
+    }
+
+    function clearCart() {
+      cart = [];
+      saveCart();
+      updateCartUI(false);
+      renderProducts();
+    }
+
+    // Abre / Fecha Gaveta do Carrinho
+    function toggleCart(open) {
+      const overlay = document.getElementById('cart-overlay');
+      const drawer = document.getElementById('cart-drawer');
+
+      if (open) {
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        overlay.classList.add('opacity-100');
+        drawer.classList.remove('translate-x-full');
+        document.body.classList.add('overflow-hidden');
+        setMobileNavActive('carrinho');
+      } else {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        overlay.classList.remove('opacity-100');
+        drawer.classList.add('translate-x-full');
+        document.body.classList.remove('overflow-hidden');
+        setMobileNavActive('inicio');
+      }
+    }
+
+    // Fecha carrinho com tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') toggleCart(false);
+    });
+
+    // Atualiza Lista do Carrinho, Contadores e Cálculo de Taxa
+    function updateCartUI(animateBadge) {
+      const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+
+      const headerBadge = document.getElementById('header-cart-count');
+      const mobileBadge = document.getElementById('mobile-cart-count');
+      const floatingBar = document.getElementById('floating-cart-bar');
+      const floatingQty = document.getElementById('floating-cart-qty');
+
+      headerBadge.textContent = totalItems;
+      floatingQty.textContent = totalItems;
+
+      if (animateBadge) {
+        headerBadge.classList.remove('animate-pop');
+        void headerBadge.offsetWidth;
+        headerBadge.classList.add('animate-pop');
+      }
+
+      if (totalItems > 0) {
+        mobileBadge.textContent = totalItems;
+        mobileBadge.classList.remove('hidden');
+        mobileBadge.classList.add('flex');
+        floatingBar.classList.remove('hidden');
+      } else {
+        mobileBadge.classList.add('hidden');
+        mobileBadge.classList.remove('flex');
+        floatingBar.classList.add('hidden');
+      }
+
+      const emptyView = document.getElementById('cart-empty-view');
+      const filledView = document.getElementById('cart-filled-view');
+      const cartFooter = document.getElementById('cart-footer');
+      const itemsList = document.getElementById('cart-items-list');
+
+      if (cart.length === 0) {
+        emptyView.classList.remove('hidden');
+        filledView.classList.add('hidden');
+        cartFooter.classList.add('hidden');
+        return;
+      }
+
+      emptyView.classList.add('hidden');
+      filledView.classList.remove('hidden');
+      cartFooter.classList.remove('hidden');
+
+      itemsList.innerHTML = cart.map((cartItem) => {
+        const product = PRODUCTS.find((p) => p.id === cartItem.id);
+        if (!product) return '';
+        const lineTotal = product.price * cartItem.qty;
+
+        return `
+          <div class="bg-white p-3 rounded-2xl border border-slate-200/80 flex items-center justify-between gap-3 shadow-sm">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-11 h-11 rounded-xl ${product.accentBg} ${product.accentText} flex items-center justify-center shrink-0">
+                <i class="fa-solid ${product.icon} text-lg"></i>
+              </div>
+              <div class="min-w-0">
+                <h4 class="text-xs font-extrabold text-slate-900 truncate">
+                  ${product.name}
+                </h4>
+                <p class="text-[11px] text-slate-400 font-medium">
+                  ${formatBRL(product.price)} un.
+                </p>
+                <p class="text-xs font-extrabold text-brand-red mt-0.5">
+                  ${formatBRL(lineTotal)}
+                </p>
+              </div>
+            </div>
+
+            <!-- Controles de Quantidade e Remoção -->
+            <div class="flex items-center gap-1.5 shrink-0">
+              <div class="inline-flex items-center bg-slate-100 rounded-xl p-0.5 border border-slate-200/70">
+                <button
+                  type="button"
+                  onclick="changeQty(${product.id}, -1)"
+                  aria-label="Diminuir quantidade"
+                  class="w-7 h-7 rounded-lg hover:bg-white text-slate-700 font-bold text-xs flex items-center justify-center transition"
+                >
+                  <i class="fa-solid fa-minus text-[10px]"></i>
+                </button>
+                <span class="w-7 text-center text-xs font-extrabold text-slate-900">
+                  ${cartItem.qty}
+                </span>
+                <button
+                  type="button"
+                  onclick="changeQty(${product.id}, 1)"
+                  aria-label="Aumentar quantidade"
+                  class="w-7 h-7 rounded-lg hover:bg-white text-brand-red font-bold text-xs flex items-center justify-center transition"
+                >
+                  <i class="fa-solid fa-plus text-[10px]"></i>
+                </button>
+              </div>
+
+              <button
+                type="button"
+                onclick="removeItem(${product.id})"
+                aria-label="Remover item"
+                class="w-8 h-8 rounded-xl text-slate-400 hover:text-red-600 hover:bg-red-50 flex items-center justify-center transition"
+              >
+                <i class="fa-regular fa-trash-can text-xs"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateTotals();
+    }
+
+    function getDeliverySelection() {
+      const select = document.getElementById('neighborhood-select');
+      const [neighborhood, feeStr] = select.value.split('|');
+      return {
+        neighborhood,
+        fee: parseFloat(feeStr) || 0
+      };
+    }
+
+    function updateTotals() {
+      const subtotal = cart.reduce((sum, item) => {
+        const product = PRODUCTS.find((p) => p.id === item.id);
+        return sum + (product ? product.price * item.qty : 0);
+      }, 0);
+
+      const { neighborhood, fee } = getDeliverySelection();
+      const total = subtotal + fee;
+
+      // Adapta obrigatoriedade do campo endereço caso seja Retirada na Loja
+      const addressInput = document.getElementById('customer-address');
+      const addressWrapper = document.getElementById('address-field-wrapper');
+      if (neighborhood === 'Retirada na Loja') {
+        addressInput.required = false;
+        addressInput.placeholder = 'Opcional (Retirada na Estrada de Belém, 649)';
+        addressWrapper.classList.add('opacity-75');
+      } else {
+        addressInput.required = true;
+        addressInput.placeholder = 'Ex: Estrada de Belém, 720, Apto 102';
+        addressWrapper.classList.remove('opacity-75');
+      }
+
+      document.getElementById('summary-subtotal').textContent = formatBRL(subtotal);
+      document.getElementById('summary-neighborhood').textContent = neighborhood;
+
+      const deliveryEl = document.getElementById('summary-delivery');
+      if (fee === 0) {
+        deliveryEl.textContent = 'Grátis';
+        deliveryEl.className = 'font-bold text-emerald-600';
+      } else {
+        deliveryEl.textContent = formatBRL(fee);
+        deliveryEl.className = 'font-bold text-slate-800';
+      }
+
+      document.getElementById('summary-total').textContent = formatBRL(total);
+      document.getElementById('floating-cart-total').textContent = formatBRL(subtotal);
+    }
+
+    function toggleChangeField() {
+      const payment = document.getElementById('payment-select').value;
+      const changeWrapper = document.getElementById('change-wrapper');
+      if (payment === 'Dinheiro') {
+        changeWrapper.classList.remove('hidden');
+      } else {
+        changeWrapper.classList.add('hidden');
+      }
+    }
+
+    // Toast de feedback visual rápido
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').textContent = message;
+      toast.classList.remove('opacity-0', '-translate-y-3');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', '-translate-y-3');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2100);
+    }
+
+    // Finalização do Pedido com Resumo Completo para WhatsApp
+    function handleCheckout(event) {
+      event.preventDefault();
+      if (cart.length === 0) return;
+
+      const name = document.getElementById('customer-name').value.trim();
+      const address = document.getElementById('customer-address').value.trim();
+      const payment = document.getElementById('payment-select').value;
+      const cashChange = document.getElementById('cash-change').value.trim();
+      const { neighborhood, fee } = getDeliverySelection();
+      const errorMsg = document.getElementById('form-error-msg');
+
+      if (!name || (neighborhood !== 'Retirada na Loja' && !address)) {
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+      errorMsg.classList.add('hidden');
+
+      let subtotal = 0;
+      const itemLines = cart.map((item) => {
+        const product = PRODUCTS.find((p) => p.id === item.id);
+        const lineTotal = product.price * item.qty;
+        subtotal += lineTotal;
+        return `• ${item.qty}x ${product.name} — ${formatBRL(lineTotal)}`;
+      });
+
+      const total = subtotal + fee;
+      const feeFormatted = fee === 0 ? 'Grátis' : formatBRL(fee);
+      const deliveryLocation =
+        neighborhood === 'Retirada na Loja'
+          ? 'Retirada no Balcão (Estrada de Belém, 649 - Hipódromo)'
+          : `${address} (${neighborhood})`;
+
+      const paymentLine =
+        payment === 'Dinheiro' && cashChange
+          ? `${payment} (${cashChange})`
+          : payment;
+
+      const message = [
+        '🏥 *NOVO PEDIDO — FARMÁCIA CIDADE*',
+        '----------------------------------',
+        `👤 *Cliente:* ${name}`,
+        '',
+        '🛒 *Itens do Pedido:*',
+        ...itemLines,
+        '',
+        `💰 *Subtotal:* ${formatBRL(subtotal)}`,
+        `🛵 *Entrega (${neighborhood}):* ${feeFormatted}`,
+        `✅ *TOTAL GERAL:* *${formatBRL(total)}*`,
+        '----------------------------------',
+        `📍 *Entrega:* ${deliveryLocation}`,
+        `💳 *Forma de Pagamento:* ${paymentLine}`,
+        '',
+        '_Enviado pelo Catálogo Digital Farmácia Cidade_'
+      ].join('\n');
+
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      updateDynamicStoreStatus();
+      renderCategories();
+      renderProducts();
+      updateCartUI(false);
+    });
+  </script>
+</body>
+</html>
